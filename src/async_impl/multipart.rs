@@ -59,6 +59,15 @@ impl Form {
         }
     }
 
+    /// Creates a new async Form without any content.
+    pub fn new_with_boundary(boundary: &str) -> Form {
+        let mut inner = FormParts::new();
+        inner.boundary = boundary.to_string();
+        Form {
+            inner,
+        }
+    }
+
     /// Get the boundary that this form will use.
     #[inline]
     pub fn boundary(&self) -> &str {
